@@ -1,0 +1,523 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/eldenring#"
+     xml:base="http://www.semanticweb.org/eldenring"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/eldenring"/>
+    
+    <!-- Основные классы -->
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#CharacterClass">
+        <rdfs:label>Класс персонажа</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Playstyle">
+        <rdfs:label>Стиль игры</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Boss">
+        <rdfs:label>Босс</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Weapon">
+        <rdfs:label>Оружие</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Spell">
+        <rdfs:label>Заклинание</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Location">
+        <rdfs:label>Локация</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Attribute">
+        <rdfs:label>Атрибут</rdfs:label>
+    </owl:Class>
+
+    <!-- Классы персонажей -->
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Vagabond">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:label>Бродяга</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Warrior">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:label>Воин</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Hero">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:label>Герой</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Astrologer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:label>Астролог</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Prophet">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:label>Пророк</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Samurai">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:label>Самурай</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Confessor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:label>Исповедник</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Wretch">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:label>Голыш</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Prisoner">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:label>Узник</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Bandit">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:label>Бандит</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Champion">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:label>Чемпион</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#BloodyWolf">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:label>Кровавый Волк</rdfs:label>
+    </owl:Class>
+
+    <!-- Стили игры -->
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#MeleePlaystyle">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Playstyle"/>
+        <rdfs:label>Ближний бой</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#MagicPlaystyle">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Playstyle"/>
+        <rdfs:label>Магия</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#HybridPlaystyle">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Playstyle"/>
+        <rdfs:label>Гибридный</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#StealthPlaystyle">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Playstyle"/>
+        <rdfs:label>Стелс</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#RangedPlaystyle">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Playstyle"/>
+        <rdfs:label>Дальний бой</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#SummonPlaystyle">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Playstyle"/>
+        <rdfs:label>Призыв существ</rdfs:label>
+    </owl:Class>
+
+    <!-- Атрибуты -->
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#StrengthAttribute">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Attribute"/>
+        <rdfs:label>Сила</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#DexterityAttribute">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Attribute"/>
+        <rdfs:label>Ловкость</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#IntelligenceAttribute">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Attribute"/>
+        <rdfs:label>Интеллект</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#FaithAttribute">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Attribute"/>
+        <rdfs:label>Вера</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#VitalityAttribute">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Attribute"/>
+        <rdfs:label>Телосложение</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#WisdomAttribute">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Attribute"/>
+        <rdfs:label>Мудрость</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#LuckAttribute">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Attribute"/>
+        <rdfs:label>Удача</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#EnduranceAttribute">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Attribute"/>
+        <rdfs:label>Выносливость</rdfs:label>
+    </owl:Class>
+
+    <!-- Оружие -->
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#StraightSword">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Прямой меч</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Greatsword">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Большой меч</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#CurvedSword">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Кривой меч</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Spear">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Копье</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Axe">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Топор</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Hammer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Молот</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Bow">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Лук</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Crossbow">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Арбалет</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Staff">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Посох</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#SacredStaff">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Священный посох</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Dagger">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Кинжал</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Scythe">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Коса</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#FistWeapon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Кулачное</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#Halberd">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Алебарда</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#ThrowingWeapon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>Метательное</rdfs:label>
+    </owl:Class>
+
+    <!-- Заклинания -->
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#FireballSpell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Spell"/>
+        <rdfs:label>Огненный шар</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#IceArrowSpell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Spell"/>
+        <rdfs:label>Ледяная стрела</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#LightningSpell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Spell"/>
+        <rdfs:label>Молния</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#HealingSpell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Spell"/>
+        <rdfs:label>Исцеление</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#BlessingSpell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Spell"/>
+        <rdfs:label>Благословение</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#CurseSpell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Spell"/>
+        <rdfs:label>Проклятие</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#InvisibilitySpell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Spell"/>
+        <rdfs:label>Невидимость</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#TeleportationSpell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Spell"/>
+        <rdfs:label>Телепортация</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#GhostSummonSpell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Spell"/>
+        <rdfs:label>Призыв призрака</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#MagicShieldSpell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Spell"/>
+        <rdfs:label>Щит магии</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#PoisonSpell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Spell"/>
+        <rdfs:label>Отравление</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#BleedingSpell">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Spell"/>
+        <rdfs:label>Кровотечение</rdfs:label>
+    </owl:Class>
+
+    <!-- Локации -->
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#LiurniaLocation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Location"/>
+        <rdfs:label>Лиурния</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#StormwindCastleLocation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Location"/>
+        <rdfs:label>Замок Штормвинд</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#RayaLucariaAcademyLocation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Location"/>
+        <rdfs:label>Академия Рая Лукарии</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#HeliosCraterLocation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Location"/>
+        <rdfs:label>Кратер Гелиос</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#SofriaDungeonLocation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Location"/>
+        <rdfs:label>Подземелье Софрии</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#AltusPlateauLocation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Location"/>
+        <rdfs:label>Плато Алтус</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#LeyndellCapitalLocation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Location"/>
+        <rdfs:label>Столица Лейндел</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#GiantsMountainsLocation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Location"/>
+        <rdfs:label>Горы Гигантов</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#AzinRuinsLocation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Location"/>
+        <rdfs:label>Руины Азин</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#DefiledLandLocation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Location"/>
+        <rdfs:label>Оскверненная земля</rdfs:label>
+    </owl:Class>
+
+    <!-- Боссы -->
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#MargitBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Маргит</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#GodrickBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Богрик</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#GoldenHippopotamusBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Золотой гиппопотам</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#DancingLionBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Священный танцующий лев</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#RellanaBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Реллана</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#StarBeastBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Звездный чудище</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#RadahnBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Радан</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#ShaggySinghBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Мохнатый Синг</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#AstaBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Аста</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#FireGiantBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Огненный великан</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#SkinGodBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Бог кожи</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#MalekithBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Малегет</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#MoghBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Мог</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#WeepingBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Плакса</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#DragonGodBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Бог дракон</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#HoraBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Хора</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#RottingKnightBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Гниющий рыцарь</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#MessmerBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Мессмер</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#PalePrinceBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Бледный принц</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#QueenMalikBoss">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:label>Королева Малик</rdfs:label>
+    </owl:Class>
+
+    <!-- Свойства -->
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eldenring#prefersPlaystyle">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/eldenring#Playstyle"/>
+        <rdfs:label>предпочитает стиль</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eldenring#hasAttribute">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/eldenring#CharacterClass"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/eldenring#Attribute"/>
+        <rdfs:label>имеет атрибут</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eldenring#hasDifficulty">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/eldenring#DifficultyLevel"/>
+        <rdfs:label>имеет сложность</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eldenring#recommendedOrder">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label>рекомендуемый порядок</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eldenring#recommendedWeapon">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/eldenring#Playstyle"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/eldenring#Weapon"/>
+        <rdfs:label>рекомендуемое оружие</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eldenring#recommendedSpell">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/eldenring#Playstyle"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/eldenring#Spell"/>
+        <rdfs:label>рекомендуемое заклинание</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eldenring#locatedIn">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/eldenring#Boss"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/eldenring#Location"/>
+        <rdfs:label>находится в</rdfs:label>
+    </owl:ObjectProperty>
+
+    <!-- Уровни сложности -->
+    <owl:Class rdf:about="http://www.semanticweb.org/eldenring#DifficultyLevel"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/eldenring#LowDifficulty">
+        <rdf:type rdf:resource="http://www.semanticweb.org/eldenring#DifficultyLevel"/>
+        <rdfs:label>Низкая сложность</rdfs:label>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/eldenring#MediumDifficulty">
+        <rdf:type rdf:resource="http://www.semanticweb.org/eldenring#DifficultyLevel"/>
+        <rdfs:label>Средняя сложность</rdfs:label>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/eldenring#HighDifficulty">
+        <rdf:type rdf:resource="http://www.semanticweb.org/eldenring#DifficultyLevel"/>
+        <rdfs:label>Высокая сложность</rdfs:label>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/eldenring#VeryHighDifficulty">
+        <rdf:type rdf:resource="http://www.semanticweb.org/eldenring#DifficultyLevel"/>
+        <rdfs:label>Очень высокая сложность</rdfs:label>
+    </owl:NamedIndividual>
+</rdf:RDF>
