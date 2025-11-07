@@ -79,6 +79,180 @@ class SimplePrologExecutor:
             self.process = None
 
 
+class DialogueManager:
+    def __init__(self, prolog_executor):
+        self.prolog = prolog_executor
+        self.user_profile = {}
+
+    def start_dialogue(self):
+        print("Добро пожаловать в систему рекомендаций Elden Ring!")
+        print("Я помогу вам подобрать подходящий класс, оружие и боссов.")
+
+        self._collect_user_preferences()
+        self._provide_recommendations()
+
+    def _collect_user_preferences(self):
+        print("\nДавайте узнаем о ваших предпочтениях в игре!")
+
+        # Стиль игры
+        print("\n1. Какой стиль игры вам больше нравится?")
+        print("   - ближний бой")
+        print("   - магия")
+        print("   - гибридный")
+        print("   - стелс")
+        print("   - дальний бой")
+        print("   - призыв существ")
+
+        while True:
+            style = input("Ваш выбор: ").strip().lower()
+
+            style_prolog = style.replace(' ', '_')
+            prolog_query = f'стиль_игры({style_prolog})'
+            result = self.prolog.execute_query(prolog_query)
+            if "Нет результатов" not in result:
+                self.user_profile['style'] = style_prolog
+                break
+            else:
+                print("Такого стиля нет в игре. Попробуйте еще раз.")
+
+
+        print("\n2. Какой у вас опыт в подобных играх?")
+        print("   - новичок")
+        print("   - опытный")
+
+        while True:
+            experience = input("Ваш уровень: ").strip().lower()
+            if experience in ['новичок', 'опытный']:
+                self.user_profile['experience'] = experience
+                break
+            else:
+                print("Пожалуйста, выберите из предложенных вариантов.")
+
+
+        print("\n3. Какие характеристики вам больше нравятся?")
+        print("   - сила")
+        print("   - ловкость")
+        print("   - интеллект")
+        print("   - вера")
+        print("   - телосложение")
+        print("   - выносливость")
+
+        attributes = []
+        print("Введите характеристики через запятую (например: сила, ловкость):")
+        user_attrs = input("Ваш выбор: ").strip().lower()
+        for attr in user_attrs.split(','):
+            attr = attr.strip()
+            prolog_query = f'атрибут({attr})'
+            result = self.prolog.execute_query(prolog_query)
+            if "Нет результатов" not in result:
+                attributes.append(attr)
+
+        self.user_profile['attributes'] = attributes
+
+    def _provide_recommendations(self):
+        print("\nНа основе ваших предпочтений, вот мои рекомендации:")
+
+
+        self._recommend_classes()
+
+
+        self._recommend_weapons()
+
+
+        self._recommend_bosses()
+
+
+        self._additional_recommendations()
+
+    def _recommend_classes(self):
+        print("\nПОДХОДЯЩИЕ КЛАССЫ:")
+
+
+        style = self.user_profile['style']
+        prolog_query = f'рекомендовать_класс({style}, X)'
+        result_style = self.prolog.execute_query(prolog_query)
+
+
+        result_attrs = "Нет результатов"
+        classes_by_style = []
+        classes_by_attrs = []
+
+        if self.user_profile['attributes']:
+            attrs = self.user_profile['attributes']
+            conditions = ', '.join([f'имеет_атрибут(X, {attr})' for attr in attrs])
+            prolog_query = f'класс(X), {conditions}'
+            result_attrs = self.prolog.execute_query(prolog_query)
+
+
+        if "Нет результатов" not in result_style:
+            classes_by_style = [line.strip() for line in result_style.split('\n') if line.strip()]
+
+        if "Нет результатов" not in result_attrs:
+            classes_by_attrs = [line.strip() for line in result_attrs.split('\n') if line.strip()]
+
+
+        intersection_classes = set(classes_by_style) & set(classes_by_attrs)
+
+
+        if "Нет результатов" not in result_style:
+            display_style = style.replace('_', ' ')
+            print(f"По стилю '{display_style}':")
+            print(result_style)
+
+        if "Нет результатов" not in result_attrs:
+            attrs = self.user_profile['attributes']
+            print(f"По характеристикам {attrs}:")
+            print(result_attrs)
+
+
+        if intersection_classes:
+            print("Наиболее подходящие классы (удовлетворяют обоим критериям):")
+            for cls in intersection_classes:
+                print(f"  {cls}")
+
+    def _recommend_weapons(self):
+        print("\nРЕКОМЕНДУЕМОЕ ОРУЖИЕ:")
+
+        style = self.user_profile['style']
+        prolog_query = f'рекомендовать_оружие_для_стиля({style}, X)'
+        result = self.prolog.execute_query(prolog_query)
+        if "Нет результатов" not in result:
+            print(result)
+
+    def _recommend_bosses(self):
+        print("\nРЕКОМЕНДУЕМЫЕ БОССЫ:")
+
+        experience = self.user_profile['experience']
+        if experience == 'новичок':
+            prolog_query = 'рекомендовать_стартового_босса(X)'
+        else:
+            prolog_query = 'рекомендовать_сложного_босса(X)'
+
+        result = self.prolog.execute_query(prolog_query)
+        if "Нет результатов" not in result:
+            print(result)
+
+    def _additional_recommendations(self):
+        print("\nДОПОЛНИТЕЛЬНЫЕ РЕКОМЕНДАЦИИ:")
+
+
+        style = self.user_profile['style']
+        prolog_query = f'рекомендовать_заклинания_для_стиля({style}, X)'
+        result = self.prolog.execute_query(prolog_query)
+        if "Нет результатов" not in result:
+            display_style = style.replace('_', ' ')
+            print(f"Заклинания для стиля '{display_style}':")
+            print(result)
+
+
+        if self.user_profile['experience'] == 'новичок':
+            prolog_query = 'рекомендовать_для_новичка(Class, Boss, Weapon), X=class_boss_weapon(Class,Boss,Weapon)'
+            result = self.prolog.execute_query(prolog_query)
+            if "Нет результатов" not in result:
+                print("Полная сборка для начала игры:")
+                print(result)
+
+
 class QueryParser:
     TEMPLATES = [
         (r'классы для (.+)', 'рекомендовать_класс({}, X)'),
@@ -101,7 +275,9 @@ class QueryParser:
             match = re.match(r'класс с (.+)', user_input_lower)
             if match:
                 attrs = match.group(1).split(' и ')
-                conditions = ', '.join([f'имеет_атрибут(X, {attr.strip()})' for attr in attrs])
+                # Заменяем пробелы на подчеркивания в атрибутах
+                processed_attrs = [attr.strip().replace(' ', '_') for attr in attrs]
+                conditions = ', '.join([f'имеет_атрибут(X, {attr})' for attr in processed_attrs])
                 return f'класс(X), {conditions}'
 
         if 'рекомендация для новичка' in user_input_lower:
@@ -117,6 +293,7 @@ class QueryParser:
             match = re.match(pattern, user_input_lower)
             if match:
                 if '{}' in prolog_template:
+                    # Заменяем пробелы на подчеркивания в группах
                     processed_groups = [group.replace(' ', '_') for group in match.groups()]
                     return prolog_template.format(*processed_groups)
                 else:
@@ -164,14 +341,15 @@ def main():
         "инфо о классах",
         "все классы",
         "рекомендация для новичка",
+        "диалог",
         "выход"
     ]
 
     print("Система рекомендаций Elden Ring")
-    print("Система готова к работе!")
-    print("\nПримеры запросов:")
-    for example in examples:
-        print(f"  {example}")
+    print("Доступные команды:")
+    print("  'старт' - начать интерактивный подбор")
+    print("  'примеры' - показать примеры запросов")
+    print("  'выход' - завершить работу")
 
     try:
         while True:
@@ -188,6 +366,11 @@ def main():
                 print("\nПримеры запросов:")
                 for example in examples:
                     print(f"  {example}")
+                continue
+
+            if user_input.lower() == 'start':
+                dialogue_manager = DialogueManager(prolog)
+                dialogue_manager.start_dialogue()
                 continue
 
             prolog_query = QueryParser.parse_to_prolog(user_input)
